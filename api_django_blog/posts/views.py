@@ -1,6 +1,16 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from rest_framework import generics
+from .serializers import PostSerializer
+from .models import Post
 
-from django.shortcuts import render
+class CreateView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-# Create your views here.
+    def perform_create(self, serializer):
+        serializer.save()
+
+
+class DetailsView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
