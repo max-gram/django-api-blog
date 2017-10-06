@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin_reorder',
+    'redactor',
     'rest_framework',
 ]
 
@@ -122,6 +123,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+
+# REDACTOR CONFIG 
+REDACTOR_OPTIONS = {'lang': 'en', 'formatting': ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',]}
+REDACTOR_UPLOAD = 'uploads/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
-
+from redactor.fields import RedactorField
 from datetime import datetime
 
 # POSTS
@@ -11,6 +11,14 @@ class Post(models.Model):
     slug = models.SlugField('Slug',unique=True, max_length=255)
     seo_keywords = models.CharField('SEO Keywords', max_length=255, blank=True, null=True)
     seo_description = models.CharField('SEO Description', max_length=255, blank=True, null=True)
+    body = RedactorField(
+        verbose_name=u'Post Text',
+        allow_file_upload=False,
+        allow_image_upload=True,
+        max_length=5000,
+        blank=True,
+        null=True
+    )
     is_published = models.BooleanField('Published', default=True)
     pub_date = models.DateTimeField('Date Published', default=datetime.now)
 
