@@ -16,11 +16,17 @@ class Post(models.Model):
     seo_keywords = models.CharField('SEO Keywords', max_length=255, blank=True, null=True)
     seo_description = models.CharField('SEO Description', max_length=255, blank=True, null=True)
     thumbnail = ContentTypeRestrictedFileField( #'Cover Image',
-        help_text='JPEG, PNG, JPG, GIF - 10 Mb Max',
+        help_text='JPEG, JPG, PNG, GIF - 10 Mb Max',
         upload_to='posts/thumbs',
         content_types=['image/jpeg', 'image/jpg', 'image/png', 'image/gif'],
         max_upload_size=10485760, 
         null=True
+    )
+    thumb = ImageSpecField(
+        source='thumbnail',
+        processors=[ResizeToFit(1000, 1000)],
+        # format='JPEG',
+        options={'quality': 80}
     )
     body = RedactorField(
         verbose_name=u'Post Text',
