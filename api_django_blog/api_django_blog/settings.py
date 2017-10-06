@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'imagekit',
     'posts.apps.PostsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -128,6 +129,10 @@ USE_TZ = True
 # REDACTOR CONFIG 
 REDACTOR_OPTIONS = {'lang': 'en', 'formatting': ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',]}
 REDACTOR_UPLOAD = 'uploads/'
+
+# Media (Upload)
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
