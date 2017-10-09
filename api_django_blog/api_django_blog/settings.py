@@ -124,9 +124,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    # 'DEFAULT_PARSER_CLASSES': (
+    #     'rest_framework.parsers.JSONParser',
+    # )
+}
 
-
-# REDACTOR CONFIG 
+# REDACTOR CONFIG
 REDACTOR_OPTIONS = {'lang': 'en', 'formatting': ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'blockquote',]}
 REDACTOR_UPLOAD = 'uploads/'
 
